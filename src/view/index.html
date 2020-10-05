@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Node Fire</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  </head>
+
+  <style media="screen">
+    body{
+      background: black;
+    }
+    h1{
+      font-family: 'Press Start 2P', cursive;
+      font-size: 35px;
+    }
+
+    form{
+      display: inline;
+    }
+
+    #res{
+      margin-top: 5px;
+    }
+
+    h2{
+      display: inline;
+      padding: 5px;
+    }
+
+    del{
+      margin-top: -35%;
+    }
+
+  </style>
+
+  <body>
+    <div class="container bg-light rounded-bottom">
+      <h1 class="bg-dark text-center text-success"><img style="width: 30px" class="img-fluid mr-2" src="http://localhost:5000/assets/fire" alt="">NodeFire<img style="width: 45px" class="img-fluid ml-2" src="http://localhost:5000/assets/node" alt=""></h1>
+      <a href="/create" class="btn btn-primary">Create Database</a>
+      <a href="/ganti" class="btn btn-warning float-right">Update Database</a>
+      <div class="" id="res">
+        <h2 id="name"></h1>
+        <h2 id="place"></h1>
+        <h2 id="github"></h1>
+      </div>
+        <form id="sh" class="">
+          <input type="text" id="doc" name="doc" placeholder="search document">
+          <button id="shb" type="button" onclick="search()" class="alert alert-success pt-1 pb-1" name="button">search</button>
+        </form>
+
+        <form id="del" class="float-right mb-11" action="index.html" method="post">
+          <input type="text" id="docdelete" value="" placeholder="delete document">
+          <button type="button" onClick="deletedata()" class="alert alert-danger pt-1 pb-1" name="button">delete</button>
+        </form>
+      <table class="table table-md">
+        <thead class='thead-dark'>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Place</th>
+            <th scope="col">Github</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabel" class="">
+
+        </tbody>
+      </table>
+
+      <table class="table table-md">
+        <thead class="thead-dark">
+          <tr>
+            <th>The Document List</th>
+          </tr>
+        </thead>
+
+        <tbody id="documenttb">
+
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+  <script type="text/javascript">
+    $.ajax({
+      type: 'GET',
+      url: "/data",
+      success: function(h){
+            data()
+            function data(){
+              h.forEach((data) => {
+                $("#tabel").append("<tr><td> " + data.name + "</td><td>" + data.place + "</td><td>" + data.github + "</td><tr/>")
+              })
+            }
+        }
+      })
+
+      $.ajax({
+        type: 'GET',
+        url: "/id",
+        success: function(h){
+              data()
+              function data(){
+                h.forEach((data) => {
+                  $("#documenttb").append("<tr><td> " + data + "</td><tr/>")
+                })
+              }
+          }
+        })
+
+    function deletedata(){
+      $.ajax({
+        type: "POST",
+        url: "/hapus",
+        data: {
+          doc: $("#docdelete").val()
+        },
+        success: function(){
+          alert("Database Successfully Deleted!")
+          window.location.reload()
+        }
+      })
+    }
+
+
+  function search(){
+    $.ajax({
+      type: "POST",
+      url: "/search",
+      data: {
+        doc: $("#doc").val()
+      },
+      success: function(x){
+        $("#name").append("Name : " + x.name + " | ")
+        $("#place").append("Place : " + x.place + " | ")
+        $("#github").append("Github : " + x.github)
+
+      }
+    })
+  }
+  </script>
+</html>
