@@ -3,7 +3,7 @@
 
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/banner.png)
 
-![](https://img.shields.io/badge/Language-Nodejs-lime) ![](https://img.shields.io/badge/Database-Firebase-Yellow)
+![](https://img.shields.io/badge/Language-Nodejs-lime) ![](https://img.shields.io/badge/Database-Firebase-Orange)
 
 # Screenshot
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/atas.png)
