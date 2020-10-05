@@ -6,7 +6,6 @@
 ![](https://img.shields.io/badge/Language-Nodejs-lime) ![](https://img.shields.io/badge/Database-Firebase-Yellow)
 
 # Screenshot
-<pre>
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/atas.png)
 
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/content.png)
@@ -15,11 +14,8 @@
 
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/update.png)
 
-</pre>
-
 # How to use ?
 
-<pre>
 1.Create Database Named 'crud' in your firestore
 
 ![](https://raw.githubusercontent.com/FajarTheGGman/NodeFire/master/.img/fire.png)
@@ -32,4 +28,3 @@
 
 4.Run The Server By Typing "npm start"
 
-</pre>
